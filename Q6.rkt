@@ -1,0 +1,15 @@
+(define (translate op)
+  (cond ((eq? op '+) +)
+        ((eq? op '-) -)
+        ((eq? op '*) *)
+        ((eq? op '/) /)
+        (else (error "Unknown operator"))))
+
+(define (postfix-eval exp)
+  (if (number? exp)
+      exp
+      (let ((arg1 (postfix-eval (car exp)))
+            (arg2 (postfix-eval (cadr exp)))
+            (op (translate (caddr exp))))
+        (op arg1 arg2))))
+(postfix-eval '((16 12 *) ((2 6 +) (9 1 -) *) /))

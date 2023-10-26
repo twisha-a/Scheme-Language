@@ -1,0 +1,7 @@
+(define L '(11 (22 (a 33 44) 55) (6 (b 7 8 (9 c) 100 d))))
+(define (count-numbers L)
+  (cond ((null? L) 0)
+        ((list? (car L)) (+ (count-numbers (car L)) (count-numbers (cdr L))))
+        ((number? (car L)) (+ 1 (count-numbers (cdr L))))
+        (else (count-numbers (cdr L)))))
+(count-numbers L)

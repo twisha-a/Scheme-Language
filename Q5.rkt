@@ -1,0 +1,8 @@
+(define x '*)
+(define (translate op)
+  (cond ((eq? op '+) +)
+        ((eq? op '-) -)
+        ((eq? op '*) *)
+        ((eq? op '/) /)
+        (else (error "Unknown operator"))))
+ ((translate x)3 4)

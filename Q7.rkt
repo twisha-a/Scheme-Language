@@ -1,0 +1,6 @@
+(define (powerset L)
+  (if (null? L)
+      '(())
+      (let ((subsets (powerset (cdr L))))
+        (append subsets (map (lambda (subset) (cons (car L) subset)) subsets)))))
+(powerset '(1 2 3 4))
